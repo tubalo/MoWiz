@@ -33,6 +33,91 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
+  Android:
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Initialize views
+        Button button = findViewById(R.id.button);
+        final TextView textView = findViewById(R.id.textView);
+
+        // Set onClickListener for button
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textView.setText("Button clicked!");
+            }
+        });
+    }
+}
+
+iPhone:
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var textView: UITextView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Set onClickListener for button
+        button.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
+    }
+
+    @objc func buttonClicked() {
+        textView.text = "Button clicked!"
+    }
+
+}
+
+#include <iostream>
+#include <string>
+
+int main()
+{
+    std::string playerName;
+    std::cout << "What is your name? ";
+    std::cin >> playerName;
+    std::cout << "Welcome, " << playerName << "!" << std::endl;
+    
+    int health = 100;
+    int monstersDefeated = 0;
+    
+    std::cout << "You have " << health << " health and have defeated " << monstersDefeated << " monsters." << std::endl;
+    
+    while (health > 0)
+    {
+        std::string monsterName;
+        std::cout << "Enter the name of the monster you want to fight: ";
+        std::cin >> monsterName;
+        
+        int monsterHealth = 50;
+        int monsterDamage = 10;
+        
+        while (monsterHealth > 0)
+        {
+            health -= monsterDamage;
+            monsterHealth -= 10;
+            std::cout << "You hit the " << monsterName << " for 10 damage. It has " << monsterHealth << " health remaining." << std::endl;
+        }
+        
+        std::cout << "You defeated the " << monsterName << "!" << std::endl;
+        monstersDefeated++;
+    }
+    
+    std::cout << "You have been defeated! You defeated " << monstersDefeated << " monsters." << std::endl;
+    
+    return 0;
+
   title: {
     fontSize: 24,
     fontWeight: 'bold',
